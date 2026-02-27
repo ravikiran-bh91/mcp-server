@@ -1,0 +1,26 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: mcp-server
+  ai:
+    mcp:
+      server:
+        protocol: STREAMABLE        # or SSE / STATELESS
+        name: openapi-mcp-bridge
+        version: 1.0.0
+        base-url: /mcp
+logging:
+  level:
+    org.springframework.ai.mcp: DEBUG
+    org.springframework.ai.tool: DEBUG     # tool execution flow
+    org.springframework.web: TRACE
+# Generic OpenAPI sources (add as many as you want)
+mcp:
+  openapi:
+    sources:
+      - name: petstore
+        spec-url: http://localhost:8080/v3/api-docs
+        #https://petstore3.swagger.io/api/v3/openapi.json
+#      - name: my-api
+#        spec-url: file:./specs/my-openapi.yaml
